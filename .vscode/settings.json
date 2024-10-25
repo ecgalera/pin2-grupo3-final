@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "apiservers",
+        "eksctl",
+        "grafana",
+        "kubernetes",
+        "OIDC",
+        "prometheus",
+        "serviceaccount",
+        "tsdb"
+    ]
+}

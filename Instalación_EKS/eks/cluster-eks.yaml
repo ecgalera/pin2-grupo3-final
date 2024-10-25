@@ -1,0 +1,29 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: mi-cluster-eks
+  region: us-east-1
+  version: "1.29"
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t3.medium
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 2
+    privateNetworking: true
+    ssh:
+      allow: true
+      publicKeyName: pods-eks-acceso
+    iam:
+      withOIDC: true
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess
+        - arn:aws:iam::aws:policy/ALBIngressControllerPolicy
+        - arn:aws:iam::aws:policy/AutoScalingFullAccess
+        - arn:aws:iam::aws:policy/ExternalDNSPolicy
+    managed: true
+
+iam:
+  withOIDC: true
