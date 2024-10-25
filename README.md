@@ -47,17 +47,15 @@ Pasos que se sigueron en el trabajo:
 
   4- Ingresamos a la instancia EC2 a travez de ssh para instalar:
   - Docker
-  - Helm
   - Kubectl
+  - eksctl
   - aws cli
 
-  script: setup.sh
+  script: setup-ec2.sh
     
  5- Conectados a la instancia EC2 via ssh generamos la un cluster EKS
- - Instalamos eksctl
- script: eksctl.sh
-
-CREAMOS ROLES PARA EKS Y LOS NODOS EKS 
+ 
+ CREAMOS ROLES PARA EKS Y LOS NODOS EKS 
 
  6- Creamos un rol IAM para EKS 
  - rol_eks.sh
@@ -70,10 +68,17 @@ CREAMOS ROLES PARA EKS Y LOS NODOS EKS
 CREAMOS EL CLUSTER
 
   8- Creamos un cluster eks con los tres pods y los roles a travez de un script
- - cluster.yml
+ - cluster-eks.yaml
  - script: desploy_eks_cluster.sh
 
-DESPLEGAMOS NGINX - PROMETHUES - GRAFANA
+DESPLEGAMOS NGINX - PROMETHUES - GRAFANA 
+Tenemos dos opciones para instalar Prometheus y Grafana 
+1- A traves de archivos yaml
+2- A traves  de Helm
+Planteamos las dos opciones pero elegimos la instalación via helm
+
+  - Instalamos Helm
+    
   9- NGINX con el escript
   - nginx_deployment.yaml
   - script: nginx.sh
